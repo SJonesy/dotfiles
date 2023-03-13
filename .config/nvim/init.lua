@@ -412,6 +412,27 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
+-- Configure the Clangd LSP
+require('lspconfig').clangd.setup {
+  cmd = {"clangd", "--background-index", "--suggest-missing-includes", "--clang-tidy"},
+  filetypes = {"c", "cpp", "objc", "objcpp"},
+  root_dir = function()
+    return vim.loop.cwd()
+  end,
+  init_options = {
+    clangdFileStatus = true
+  },
+  settings = {
+    clangd = {
+      includePaths = {
+        "/usr/include",
+        "/usr/include/linux",
+        "/usr/include/sys"
+      }
+    }
+  }
+}
+
 -- nvim-cmp setup
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
