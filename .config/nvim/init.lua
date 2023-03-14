@@ -414,11 +414,11 @@ mason_lspconfig.setup_handlers {
 
 -- Configure the Clangd LSP
 require('lspconfig').clangd.setup {
-  cmd = {"clangd", "--background-index", "--suggest-missing-includes", "--clang-tidy"},
+  capabilities = capabilities,
+  on_attach = on_attach,
+  cmd = {"clangd"},
+  --cmd = {"clangd", "--background-index", "--suggest-missing-includes", "--clang-tidy"},
   filetypes = {"c", "cpp", "objc", "objcpp"},
-  root_dir = function()
-    return vim.loop.cwd()
-  end,
   init_options = {
     clangdFileStatus = true
   },
