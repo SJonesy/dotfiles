@@ -416,8 +416,7 @@ mason_lspconfig.setup_handlers {
 require('lspconfig').clangd.setup {
   capabilities = capabilities,
   on_attach = on_attach,
-  cmd = {"clangd"},
-  --cmd = {"clangd", "--background-index", "--suggest-missing-includes", "--clang-tidy"},
+  cmd = {"clangd", "--background-index", "--suggest-missing-includes", "--clang-tidy"},
   filetypes = {"c", "cpp", "objc", "objcpp"},
   init_options = {
     clangdFileStatus = true
